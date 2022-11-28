@@ -11,10 +11,10 @@ const int B = 3;
 typedef struct pontinho{
     //std::vector<bool> arestas_com_vizinho;
     //bool direcionais[4];
-    std::map<char, bool> direcionais = {{'L', false}, 
-                                        {'T', false},
-                                        {'R', false},
-                                        {'B', false}};
+    std::map<char, char> direcionais = {{'L', 'f'}, 
+                                        {'T', 'f'},
+                                        {'R', 'f'},
+                                        {'B', 'f'}};
 
 } pontinho;
 
@@ -37,36 +37,6 @@ typedef struct pontinho{
                         + (m-1) dos tracinhos
 */
 
-class Pontinhos{
-private:
-    pontinho **grid;
-    int m, n;
-
-public:
-    Pontinhos(int linhas, int colunas);
-
-};
-
-class PontinhoView{
-   // atributos
-private:
-    int m, n; // linhas e colunas da matriz
-
-    // métodos
-
-public:
-    PontinhoView(int m, int n);
-
-    ~PontinhoView();
-
-    char** generateView(Pontinhos p_grid);
-};
-
-PontinhoView::PontinhoView(int m, int n){
-    this-> m = m;
-    this->n = n;
-}
-
 template <typename datatype> 
 datatype** alocarMatriz(int linhas, int colunas){
     
@@ -86,4 +56,65 @@ template <typename datatype>
 void liberarMatriz(datatype **M){
     free(M[0]);
     free(M);
+}
+
+class Pontinhos{
+private:
+    pontinho **grid;
+    int **closed_squares;
+    int m, n;
+
+public:
+    Pontinhos(int linhas, int colunas);
+    void fazerJogada(int l1, int c1, int l2, int c2);
+};
+
+Pontinhos::Pontinhos(int linhas, int colunas){
+    this->m = linhas;
+    this->n = colunas;
+    this->grid = alocarMatriz<pontinho>(this->m, this->n);
+    this->closed_squares = alocarMatriz<int>(this->m - 1, this->n - 1);
+
+    for(int i = 0; i < m; i++){
+        grid[i][0].direcionais['L'] = 'n'; 
+        grid[i][n - 1].direcionais['R'] = 'n';
+    }
+
+    for(int j = 0; j < n; j++){
+        grid[0][j].direcionais['T'] = 'n';
+        grid[m - 1][j].direcionais['B'] = 'n';
+    }
+}
+
+void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
+     // verifica se a jogada é válida (distância máxima de 1)
+
+     // escreve jogada no grid (atualizar direções dos pares ordenados)
+
+    // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
+
+    // se fechou, verifica vitória
+
+    // se não há vitória, o jogador que fechou quadrado joga novamente
+    
+}
+
+class PontinhoView{
+   // atributos
+private:
+    int m, n; // linhas e colunas da matriz
+
+    // métodos
+
+public:
+    PontinhoView(int m, int n);
+
+    ~PontinhoView();
+
+    char** generateView(Pontinhos p_grid);
+};
+
+PontinhoView::PontinhoView(int m, int n){
+    this-> m = m;
+    this->n = n;
 }

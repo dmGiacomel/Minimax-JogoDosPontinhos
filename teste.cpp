@@ -10,6 +10,14 @@ int main(){
     liberarMatriz<pontinho>(pontos);
 
     a = alocarMatriz<int>(3,3);
+
+    for(int i =0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            std::cout << "a[" << i << "][" << j << "] = " << a[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
     liberarMatriz<int>(a);
 
     return 0;
