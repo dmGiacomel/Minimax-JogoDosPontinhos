@@ -1,9 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include <map>
+
+const int L = 0;
+const int T = 1;
+const int R = 2;
+const int B = 3;
 
 typedef struct pontinho{
-    std::vector<bool> arestas_com_vizinho;
+    //std::vector<bool> arestas_com_vizinho;
+    //bool direcionais[4];
+    std::map<char, bool> direcionais = {{'L', false}, 
+                                        {'T', false},
+                                        {'R', false},
+                                        {'B', false}};
+
 } pontinho;
 
 /*
@@ -25,9 +37,35 @@ typedef struct pontinho{
                         + (m-1) dos tracinhos
 */
 
-class PontinhoView{
-   // char 
+class Pontinhos{
+private:
+    pontinho **grid;
+    int m, n;
+
+public:
+    Pontinhos(int linhas, int colunas);
+
 };
+
+class PontinhoView{
+   // atributos
+private:
+    int m, n; // linhas e colunas da matriz
+
+    // métodos
+
+public:
+    PontinhoView(int m, int n);
+
+    ~PontinhoView();
+
+    char** generateView(Pontinhos p_grid);
+};
+
+PontinhoView::PontinhoView(int m, int n){
+    this-> m = m;
+    this->n = n;
+}
 
 template <typename datatype> 
 datatype** alocarMatriz(int linhas, int colunas){
@@ -49,13 +87,3 @@ void liberarMatriz(datatype **M){
     free(M[0]);
     free(M);
 }
-
-class Pontinhos{
-private:
-    pontinho **grid;
-
-public:
-    Pontinhos(int linhas, int colunas);
-
-};
-
