@@ -88,6 +88,10 @@ Pontinhos::Pontinhos(int linhas, int colunas){
 
 void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
      // verifica se a jogada é válida (distância máxima de 1)
+     if((abs(l1 - l2) || abs(c1 - c2)) > 1){
+        std::cout << "Jogada inválida, você deve conectar apenas dois pontos" << std::endl;
+        // fazer jogada novamente
+     }
 
      // escreve jogada no grid (atualizar direções dos pares ordenados)
 
