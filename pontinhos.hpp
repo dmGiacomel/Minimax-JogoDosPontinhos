@@ -183,17 +183,20 @@ char** PontinhoView::generateView(Pontinhos p_grid){
         
         std::cout << std::endl;
     }
+
+    return matriz_Dispor;
 }
 
-/*
-      0   1   2   3
-    0 *---*   *   *
-      | D |
-    1 *---*   *   *
-
-    2 *   *   *   *
-
-    3 *   *   *   *
+/* 
+ʲ/ᶦ ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷  
+  ⁰   0   1   2   3
+  ¹ 0 *---*   *   *
+  ²   | D |
+  ³ 1 *---*   *   *
+  ⁴
+  ⁵ 2 *   *   *   *
+  ⁶
+  ⁷ 3 *   *   *   *
 
    caracteres linha = 2 do label da esquerda
             + m dos pontinhos
