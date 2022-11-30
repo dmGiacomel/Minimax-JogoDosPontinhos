@@ -159,6 +159,7 @@ char** PontinhoView::generateView(Pontinhos p_grid){
             else if((i == 0) && ((j-1) % 4 == 0)){
                 std::cout << aux;
                 matriz_Dispor[i][j] = aux;
+                aux++;
             }
 
             // se nao for o caso, caso esteja em uma linha ímpar e na primeira coluna, deve
