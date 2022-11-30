@@ -123,7 +123,20 @@ PontinhoView::PontinhoView(int m, int n){
 }
 
 char** PontinhoView::generateView(Pontinhos p_grid){
+    int char_colunas = 2 + n + (n - 1) * 3;
+    int char_linhas = 2 * m;
 
+    for(int i = 0; i < char_linhas; i++){
+        for(int j = 0; j < char_colunas; j++){
+            int aux = 0;
+            if(i == 0 && j == 0){
+                printf(" ");
+            }
+            else if(i == 0){
+                
+            }
+        }
+    }
 }
 
 /*
