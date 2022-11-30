@@ -148,15 +148,16 @@ char** PontinhoView::generateView(Pontinhos p_grid){
         for(int j = 0; j < char_colunas; j++){
             int aux = 0;
             
-            // se estiver na primeira linha e primeira coluna, precisa só deixar um espaço
-            if(i == 0 && j == 0){
+            // se estiver na primeira linha e primeira coluna ou na primeira linha e na segunda coluna, precisa só deixar um espaço
+            if((i == 0 && j == 0) || (i == 0 && j == 1) ){
                 std::cout << " ";
                 matriz_Dispor[i][j] = ' ';
             }
 
-            // caso esteja na primeira linha, mas em posições cuja posição anterior tenha mod 4 == 0, deve escrever
+            // caso esteja na primeira linha, mas em posições que sejam pares, mas não com mod 4 == 0, deve escrever
             // o número de visualização da coluna
-            else if((i == 0) && ((j-1) % 4 == 0)){
+            else if((i == 0) && // par          // mas não divisível por 4
+                                ((j % 2 == 0) && (j % 4 != 0))){
                 std::cout << aux;
                 matriz_Dispor[i][j] = aux;
                 aux++;
@@ -171,7 +172,8 @@ char** PontinhoView::generateView(Pontinhos p_grid){
 
             // se estiver em uma linha ímpar E estiver em uma coluna onde está disposto o número da coluna, deve
             // escrever o "pontinho", através do caractere '*'
-            else if(i % 2 != 0 && ((j-1) % 4 == 0)){
+            else if(i % 2 != 0 && // par          // mas não divisível por 4
+                                ((j % 2 == 0) && (j % 4 != 0))){
                 std::cout << "*";
                 matriz_Dispor[i][j] = '*';
                 //if(p_grid->) 
@@ -189,7 +191,7 @@ char** PontinhoView::generateView(Pontinhos p_grid){
 }
 
 /* 
-ʲ/ᶦ  ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³  
+ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴  
   ⁰   0   1   2   3
   ¹ 0 *---*   *   *
   ²   | D |
