@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <map>
 
-const int L = 0;
+/*const int L = 0;
 const int T = 1;
 const int R = 2;
-const int B = 3;
+const int B = 3;*/
 
 typedef struct pontinho{
     //std::vector<bool> arestas_com_vizinho;
@@ -17,25 +17,6 @@ typedef struct pontinho{
                                         {'B', 'f'}};
 
 } pontinho;
-
-/*
-      0   1   2   3
-    0 *---*   *   *
-      | D |
-    1 *---*   *   *
-
-    2 *   *   *   *
-
-    3 *   *   *   *
-
-   caracteres linha = 2 do label da esquerda
-            + m dos pontinhos
-            + (m-1) * 3 dos tracinhos
-
-    caracteres coluna = 1 label de cima
-                        + m dos pontinhos
-                        + (m-1) dos tracinhos
-*/
 
 template <typename datatype> 
 datatype** alocarMatriz(int linhas, int colunas){
@@ -111,10 +92,13 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
             grid[l2][c2].direcionais['L'] = 'v';
         }
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
+        // como fazer isso pelo amor de deus
 
     // se fechou, verifica vitória
+        // como fazer isso pelo amor de deus 2
 
     // se não há vitória, o jogador que fechou quadrado joga novamente
+        // chama função de fazerJogada novamente, nao to colocando ainda por medo do codigo se rodar sozinho e gerar uma recursao fudida e quebrar tudo
     
 }
 
@@ -137,3 +121,26 @@ PontinhoView::PontinhoView(int m, int n){
     this-> m = m;
     this->n = n;
 }
+
+char** PontinhoView::generateView(Pontinhos p_grid){
+
+}
+
+/*
+      0   1   2   3
+    0 *---*   *   *
+      | D |
+    1 *---*   *   *
+
+    2 *   *   *   *
+
+    3 *   *   *   *
+
+   caracteres linha = 2 do label da esquerda
+            + m dos pontinhos
+            + (m-1) * 3 dos tracinhos
+
+    caracteres coluna = 1 label de cima
+                        + m dos pontinhos
+                        + (m-1) dos tracinhos
+*/
