@@ -189,7 +189,7 @@ char** PontinhoView::generateView(Pontinhos p_grid){
 }
 
 /* 
-ʲ/ᶦ ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷  
+ʲ/ᶦ  ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³  
   ⁰   0   1   2   3
   ¹ 0 *---*   *   *
   ²   | D |
