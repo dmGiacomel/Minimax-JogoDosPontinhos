@@ -94,7 +94,22 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
      }
 
      // escreve jogada no grid (atualizar direções dos pares ordenados)
-
+        if((l1 > l2) && (c1 == c2)){
+            grid[l1][c1].direcionais['T'] = 'v';
+            grid[l2][c2].direcionais['B'] = 'v';
+        }
+        else if((l2 > l1) && (c1 == c2)){
+            grid[l1][c1].direcionais['B'] = 'v';
+            grid[l2][c2].direcionais['T'] = 'v';
+        }
+        else if((c1 > c2) && (l1 == l2)){
+            grid[l1][c1].direcionais['L'] = 'v';
+            grid[l2][c2].direcionais['R'] = 'v';
+        }
+        else if((c2 > c1) && (l1 == l2)){
+            grid[l1][c1].direcionais['R'] = 'v';
+            grid[l2][c2].direcionais['L'] = 'v';
+        }
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
 
     // se fechou, verifica vitória
