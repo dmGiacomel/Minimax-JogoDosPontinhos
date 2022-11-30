@@ -75,22 +75,32 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
      }
 
      // escreve jogada no grid (atualizar direções dos pares ordenados)
+    
+        // se a primeira linha for maior que a segunda, deve haver conexão do TOP e BOTTOM, respectivamente, para os pontos
         if((l1 > l2) && (c1 == c2)){
             grid[l1][c1].direcionais['T'] = 'v';
             grid[l2][c2].direcionais['B'] = 'v';
         }
+
+        // se a segunda linha for maior que a primeira, deve haver conexão do BOTTOM e TOP, respectivamente, para os pontos
         else if((l2 > l1) && (c1 == c2)){
             grid[l1][c1].direcionais['B'] = 'v';
             grid[l2][c2].direcionais['T'] = 'v';
         }
+
+        // se a primeira coluna for maior que a segunda, deve haver conexão do LEFT e RIGHT, respectivamente, para os pontos
         else if((c1 > c2) && (l1 == l2)){
             grid[l1][c1].direcionais['L'] = 'v';
             grid[l2][c2].direcionais['R'] = 'v';
         }
+
+        // se a segunda coluna for maior que a primeira, deve haver conexão do RIGHT e LEFT, respectivamente, para os pontos
         else if((c2 > c1) && (l1 == l2)){
             grid[l1][c1].direcionais['R'] = 'v';
             grid[l2][c2].direcionais['L'] = 'v';
         }
+
+        
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
         // como fazer isso pelo amor de deus
 
@@ -125,17 +135,53 @@ PontinhoView::PontinhoView(int m, int n){
 char** PontinhoView::generateView(Pontinhos p_grid){
     int char_colunas = 2 + n + (n - 1) * 3;
     int char_linhas = 2 * m;
+    
+    // --------- alocando matriz de caracteres que será retornada ------
+    char** matriz_Dispor = (char**)malloc(char_linhas * sizeof(char*));
+
+    for(int i = 0; i < char_colunas; i++){
+        matriz_Dispor[i] = (char*)malloc(sizeof(char));
+    }
+    // -----------------------------------------------------------------
 
     for(int i = 0; i < char_linhas; i++){
         for(int j = 0; j < char_colunas; j++){
             int aux = 0;
+            
+            // se estiver na primeira linha e primeira coluna, precisa só deixar um espaço
             if(i == 0 && j == 0){
-                printf(" ");
+                std::cout << " ";
+                matriz_Dispor[i][j] = ' ';
             }
-            else if(i == 0){
-                
+
+            // caso esteja na primeira linha, mas em posições cuja posição anterior tenha mod 4 == 0, deve escrever
+            // o número de visualização da coluna
+            else if((i == 0) && ((j-1) % 4 == 0)){
+                std::cout << aux;
+                matriz_Dispor[i][j] = aux;
+            }
+
+            // se nao for o caso, caso esteja em uma linha ímpar e na primeira coluna, deve
+            // dispor o número de visualização da linha
+            else if(i % 2 != 0 && j == 0){
+                std::cout << i;
+                matriz_Dispor[i][j] = i;
+            }
+
+            // se estiver em uma linha ímpar E estiver em uma coluna onde está disposto o número da coluna, deve
+            // escrever o "pontinho", através do caractere '*'
+            else if(i % 2 != 0 && ((j-1) % 4 == 0)){
+                std::cout << "*";
+                matriz_Dispor[i][j] = '*';
+                //if(p_grid->) 
+                    // nao sei fazer essa parte aqui
+                    // precisa verificar se o pontinho tem conexão com a direita, para
+                    // escrever '---' para demonstrar a conexão dos pontinhos
+                    // mas não to conseguindo acessar as direções do pontinho
             }
         }
+        
+        std::cout << std::endl;
     }
 }
 
