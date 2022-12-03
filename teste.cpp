@@ -3,16 +3,16 @@
 
 int main(){
     
-    pontinho **pontos; 
-    int lin, col;
-    lin = 3, col = 3;
+    //pontinho **pontos; 
+    //int lin, col;
+    //lin = 3, col = 3;
     //PontinhoView view = new PontinhoView(lin, col); // que??? deu um erro estranho aqui
     int **a;
 
-    pontos = alocarMatriz<pontinho>(3,3);
-    liberarMatriz<pontinho>(pontos);
+    //pontos = alocarMatriz<pontinho>(3,3);
+    //liberarMatriz<pontinho>(pontos);
 
-    a = alocarMatriz<int>(3,3);
+    a = GeneralHelper::alocarMatriz<int>(3,3);
 
     for(int i =0; i < 3; i++){
         for(int j = 0; j < 3; j++){
@@ -21,9 +21,7 @@ int main(){
         std::cout << std::endl;
     }
 
-    liberarMatriz<int>(a);
-
-
+    GeneralHelper::liberarMatriz<int>(a);
 
     return 0;
 }
