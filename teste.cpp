@@ -1,27 +1,16 @@
 #include <iostream>
 #include "pontinhos.hpp"
+#include "matriz.hpp"
 
-int main(){
-    
-    //pontinho **pontos; 
-    //int lin, col;
-    //lin = 3, col = 3;
-    //PontinhoView view = new PontinhoView(lin, col); // que??? deu um erro estranho aqui
-    int **a;
+int main(int argc, char **argv){
 
-    //pontos = alocarMatriz<pontinho>(3,3);
-    //liberarMatriz<pontinho>(pontos);
+    int linhas_pontinhos = atoi(argv[1]);
+    int colunas_pontinhos = atoi(argv[2]);
 
-    a = GeneralHelper::alocarMatriz<int>(3,3);
-
-    for(int i =0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            std::cout << "a[" << i << "][" << j << "] = " << a[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    GeneralHelper::liberarMatriz<int>(a);
+    Pontinhos *pontinhos = new Pontinhos(linhas_pontinhos, colunas_pontinhos); 
+    Matriz<char>* matriz = pontinhos->generateView();
+    matriz->printMatriz();
+    delete(matriz);
 
     return 0;
 }

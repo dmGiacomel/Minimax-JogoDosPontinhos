@@ -2,24 +2,44 @@
 #define PONTINHOS_CPP
 #include <iostream>
 #include <stdlib.h>
-#include <map>
+#include <vector>
 #include "pontinhos.hpp"
-#include "general_helper.hpp"
+#include "pontinhos_helper.hpp"
+#include "matriz.hpp"
+
+int Pontinhos::getLinhas(){
+    return this->linhas;    
+} 
+
+int Pontinhos::getColunas(){
+    return this->colunas;
+}
+
+Matriz<char>* Pontinhos::generateView(){
+    return PontinhosHelper::generateView(this);
+}
+
+pontinho Pontinhos::getPontinhoAt(int linha, int coluna){
+    return grid->matriz[linha][coluna];
+}
 
 Pontinhos::Pontinhos(int linhas, int colunas){
+
     this->linhas = linhas;
     this->colunas = colunas;
-    this->grid = GeneralHelper::alocarMatriz<pontinho>(this->linhas, this->colunas);
-    this->closed_squares = GeneralHelper::alocarMatriz<int>(this->linhas - 1, this->colunas - 1);
+
+    grid = new Matriz<pontinho>(linhas, colunas);
+    closed_squares = new Matriz<int>(linhas - 1, colunas - 1);
 
     for(int i = 0; i < linhas; i++){
-        grid[i][0].direcionais['L'] = 'n'; 
-        grid[i][colunas - 1].direcionais['R'] = 'n';
+        grid->matriz[i][0].direcionais[L] = 'n';
+        grid->matriz[i][colunas - 1].direcionais[R] = 'n';
     }
 
+
     for(int j = 0; j < colunas; j++){
-        grid[0][j].direcionais['T'] = 'n';
-        grid[linhas - 1][j].direcionais['B'] = 'n';
+        grid->matriz[0][j].direcionais[T] = 'n';
+        grid->matriz[linhas - 1][j].direcionais[B] = 'n';
     }
 }
 
@@ -34,28 +54,27 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
     
         // se a primeira linha for maior que a segunda, deve haver conexão do TOP e BOTTOM, respectivamente, para os pontos
         if((l1 > l2) && (c1 == c2)){
-            grid[l1][c1].direcionais['T'] = 'v';
-            grid[l2][c2].direcionais['B'] = 'v';
+            grid->matriz[l1][c1].direcionais[T] = 'v';
+            grid->matriz[l2][c2].direcionais[B] = 'v';
         }
 
         // se a segunda linha for maior que a primeira, deve haver conexão do BOTTOM e TOP, respectivamente, para os pontos
         else if((l2 > l1) && (c1 == c2)){
-            grid[l1][c1].direcionais['B'] = 'v';
-            grid[l2][c2].direcionais['T'] = 'v';
+            grid->matriz[l1][c1].direcionais[B] = 'v';
+            grid->matriz[l2][c2].direcionais[T] = 'v';
         }
 
         // se a primeira coluna for maior que a segunda, deve haver conexão do LEFT e RIGHT, respectivamente, para os pontos
         else if((c1 > c2) && (l1 == l2)){
-            grid[l1][c1].direcionais['L'] = 'v';
-            grid[l2][c2].direcionais['R'] = 'v';
+            grid->matriz[l1][c1].direcionais[L] = 'v';
+            grid->matriz[l2][c2].direcionais[R] = 'v';
         }
 
         // se a segunda coluna for maior que a primeira, deve haver conexão do RIGHT e LEFT, respectivamente, para os pontos
         else if((c2 > c1) && (l1 == l2)){
-            grid[l1][c1].direcionais['R'] = 'v';
-            grid[l2][c2].direcionais['L'] = 'v';
+            grid->matriz[l1][c1].direcionais[R] = 'v';
+            grid->matriz[l2][c2].direcionais[L] = 'v';
         }
-
 
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
         // como fazer isso pelo amor de deus
@@ -68,24 +87,10 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
     
 }
 
+Pontinhos::~Pontinhos(){
+    delete(grid);
+    delete(closed_squares);
+}
 
-/* 
-ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴  
-  ⁰   0   1   2   3
-  ¹ 0 *---*   *   *
-  ²   | D |
-  ³ 1 *---*   *   *
-  ⁴
-  ⁵ 2 *   *   *   *
-  ⁶
-  ⁷ 3 *   *   *   *
 
-   caracteres linha = 2 do label da esquerda
-            + m dos pontinhos
-            + (m-1) * 3 dos tracinhos
-
-    caracteres coluna = 1 label de cima
-                        + m dos pontinhos
-                        + (m-1) dos tracinhos
-*/
 #endif
