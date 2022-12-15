@@ -164,18 +164,9 @@ int Pontinhos::quemGanhou(){
         return PLAYER_2;
 }
 
-void Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
+int Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
 
         int jl1, jc1, jl2, jc2;
-        // verifica se a jogada é válida (distância máxima de 1)
-        if(((abs(l1 - l2) > 1) || (abs(c1 - c2)) > 1) || ((l1 != l2) && (c1 != c2))){
-            std::cout << "Jogada inválida, você deve conectar apenas dois pontos na horizontal ou vertical" << std::endl;
-            std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
-            std::cin >> jl1 >> jc1 >> jl2 >> jc2;
-            fazerJogada(player, jl1, jc1, jl2, jc2);
-            // fazer jogada novamente
-        }
-
 
         // verificar validade
         // escreve jogada no grid (atualizar direcionais dos pares ordenados)
@@ -207,27 +198,24 @@ void Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
 
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
         // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
-    atualizaJogada(player, l1, c1, l2, c2);
+    return atualizaJogada(player, l1, c1, l2, c2);
+}
+
+int Pontinhos:: atualizaJogada(int player, int l1, int c1, int l2, int c2){
+    int jl1, jc1, jl2, jc2;
+    int status = 0;
     if(atualizarMatrizQuadrado(player, l1, c1, l2, c2)){
 
         // se fechou, verifica se  o jogo terminou
         if(acabouJogo()){
-
-            std::cout << "O jogo acabou!\n";
-            std::cout << "Quem ganhou: " << quemGanhou() << "\n";
-            exit(0);
+            status = quemGanhou();            
         }
-
-        // se não há vitória, o jogador que fechou quadrado joga novamente
-        std::cout << "Você fechou um quadrado!! Jogue novamente.\n";
-        std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
-        std::cin >> jl1 >> jc1 >> jl2 >> jc2;
-        fazerJogada(player, jl1, jc1, jl2, jc2);
+        else{
+            status = 1;
+        }
     }
-
+    return status;
 }
-
-
 
 Pontinhos::~Pontinhos(){
     delete(grid);

@@ -23,8 +23,8 @@ int main(int argc, char **argv)
    
 
     int aux = 0, player = 0;
-
-    while(true){
+    int status = 0;
+    while((status == 0) || (status == 1)){
         
         if(aux % 2 == 0){
             player = PLAYER_1;
@@ -39,11 +39,28 @@ int main(int argc, char **argv)
 
         std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
         std::cin >> jl1 >> jc1 >> jl2 >> jc2;
-        pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
-        std::cout << "direcional BOTTOM do ponto (1,1)--> " << pontinhos->getPontinhoAt(1, 1).direcionais[B] << std::endl;
+        while(((abs(jl1 - jl2) > 1) || (abs(jc1 - jc2)) > 1) || ((jl1 != jl2) && (jc1 != jc2))){
+            std::cout << "Jogada inválida, você deve conectar apenas dois pontos na horizontal ou vertical" << std::endl;
+            std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
+            std::cin >> jl1 >> jc1 >> jl2 >> jc2;
+        }
+        status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
         std::cout << "\n";
         matriz = pontinhos->generateView();
         matriz->printMatriz();
+        while(status == 1){
+            std::cout << "Você fechou um quadrado!! Jogue novamente.\n";
+            std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
+            std::cin >> jl1 >> jc1 >> jl2 >> jc2;
+            status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
+        }
+
+        if(status == PLAYER_1){
+            std::cout << "Player 1 venceu!\n";
+        }
+        if(status == PLAYER_2){
+            std::cout << "Player 2 venceu!\n";
+        }
 
         aux++;
     }

@@ -41,7 +41,8 @@ public:
     Pontinhos(int linhas, int colunas);
     bool ganhouJogo();
     ~Pontinhos();
-    void fazerJogada(int player, int l1, int c1, int l2, int c2);
+    int fazerJogada(int player, int l1, int c1, int l2, int c2);
+    int atualizaJogada(int player, int l1, int c1, int l2, int c2);
     int getLinhas();
     int getColunas();
     int getQuadradoAt(int linha, int coluna);
