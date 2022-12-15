@@ -207,6 +207,7 @@ void Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
 
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
         // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
+    atualizaJogada(player, l1, c1, l2, c2);
     if(atualizarMatrizQuadrado(player, l1, c1, l2, c2)){
 
         // se fechou, verifica se  o jogo terminou
@@ -225,6 +226,9 @@ void Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
     }
 
 }
+
+
+
 Pontinhos::~Pontinhos(){
     delete(grid);
     delete(squares);
