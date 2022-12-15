@@ -16,6 +16,10 @@ int Pontinhos::getLinhas(){
     return this->linhas;    
 } 
 
+std::vector<Pontinhos*> Pontinhos::gerarFilhos(){
+    return PontinhosHelper::gerarFilhos(this);
+}
+
 int Pontinhos::getColunas(){
     return this->colunas;
 }

@@ -1,8 +1,8 @@
 #include <iostream>
-#include "pontinhos.hpp"
 #include "matriz.hpp"
-#include "pontinhos_helper.hpp"
 #include <vector>
+#include "pontinhos.hpp"
+
 
 int main(int argc, char **argv)
 {
@@ -12,14 +12,14 @@ int main(int argc, char **argv)
     pontinhos->fazerJogada(-1, 1, 1, 1, 0);
     Matriz<char> *view = pontinhos->generateView();
     view->printMatriz();
-    filhos = PontinhosHelper::gerarFilhos(pontinhos);
+    filhos = pontinhos->gerarFilhos();
 
-
+    std::cout << pontinhos->gerarFilhos().size() << "\n";
 
     for(std::vector<Pontinhos*>::iterator it = filhos.begin(); it != filhos.end(); it++){
+        std::cout << "to aquii\n";
         view = (*it)->generateView();
         view->printMatriz();
-
     }
 
     return 0;
