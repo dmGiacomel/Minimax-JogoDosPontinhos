@@ -3,10 +3,14 @@
 #include "pontinhos.hpp"
 #include <iostream>
 #include "matriz.hpp"
+#include <set>
+#include <iterator>
 class PontinhosHelper{
 
 public:
     static Matriz<char>* generateView(Pontinhos *p_grid);
+    static std::vector<Pontinhos*> gerarFilhos(Pontinhos *pai);
+    static Pontinhos* getPontinhosCopia(Pontinhos *base);
 };
 
 /* 
@@ -29,7 +33,7 @@ public:
                         + (m-1) dos tracinhos
 */
 
-//-------------NÃO COMPLETAMENTE TESTADA , MAS PARECE ESTAR EM ORDEM-------------
+//--------------PARECE ESTAR EM ORDEM-------------
 Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
 
     //determinacao das dimensoes
@@ -114,6 +118,43 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
 
 
     return view; 
+}
+
+std::vector<Pontinhos*> PontinhosHelper::gerarFilhos(Pontinhos *pai){
+    Pontinhos *copia = getPontinhosCopia(pai);
+    std::vector<Pontinhos*> filhos;
+
+    for(int i = 0; i < copia->getLinhas(); i++){
+        for(int j = 0; i < copia->getColunas(); j++){
+            for(int k = R; k <= B; k++){
+                if(copia->getGrid()->matriz[i][j].direcionais[k] == 'f'){
+                    copia->getGrid()->matriz[i][j].direcionais[k] = 'v';
+                    filhos.emplace_back(getPontinhosCopia(copia));
+                    copia->getGrid()->matriz[i][j].direcionais[k] = 'f';
+                }
+            }  
+        }
+    }
+
+    delete(copia);
+    return filhos; 
+}
+
+Pontinhos* PontinhosHelper::getPontinhosCopia(Pontinhos *base){
+    Pontinhos *temp = new Pontinhos(base->getLinhas(), base->getColunas());
+    for(int i = 0; i < base->getLinhas(); i++){
+        for(int j = 0; j < base->getColunas(); j++){
+            temp->getGrid()->matriz[i][j] = base->getGrid()->matriz[i][j]; 
+        }
+    }
+    
+    for(int i = 0; i < base->getLinhas() - 1; i++){
+        for(int j = 0; j < base->getColunas() - 1; j++){
+            temp->getSquares()->matriz[i][j] = base->getSquares()->matriz[i][j]; 
+        }
+    }
+
+    return temp;
 }
 
 

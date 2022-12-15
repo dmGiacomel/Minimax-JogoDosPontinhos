@@ -53,6 +53,8 @@ int main(int argc, char **argv)
             std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
             std::cin >> jl1 >> jc1 >> jl2 >> jc2;
             status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
+            matriz = pontinhos->generateView();
+            matriz->printMatriz();
         }
 
         if(status == PLAYER_1){

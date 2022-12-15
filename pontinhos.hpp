@@ -45,6 +45,8 @@ public:
     int atualizaJogada(int player, int l1, int c1, int l2, int c2);
     int getLinhas();
     int getColunas();
+    Matriz<pontinho>* getGrid();
+    Matriz<int>* getSquares();
     int getQuadradoAt(int linha, int coluna);
     pontinho getPontinhoAt(int linha, int coluna);
     Matriz<char>* generateView();

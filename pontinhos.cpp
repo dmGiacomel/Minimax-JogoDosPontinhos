@@ -127,10 +127,6 @@ bool Pontinhos::atualizarMatrizQuadrado(int player, int l1, int c1, int l2, int 
     return fechou_quadrado;
 }
 
-bool Pontinhos::ganhouJogo(){}
-//verificar se jogada é válida (depois a gente trata o caso da pessoa jogar errado, não é só aqui, por enquanto é uma comentário, azar 
-//depois a gente vê :ppp
-
 bool Pontinhos::acabouJogo(){
 
     for(int i = 0; i < linhas - 1; i++){
@@ -215,6 +211,14 @@ int Pontinhos:: atualizaJogada(int player, int l1, int c1, int l2, int c2){
         }
     }
     return status;
+}
+
+Matriz<pontinho>* Pontinhos::getGrid(){
+    return grid;
+}
+
+Matriz<int>* Pontinhos::getSquares(){
+    return squares;
 }
 
 Pontinhos::~Pontinhos(){
