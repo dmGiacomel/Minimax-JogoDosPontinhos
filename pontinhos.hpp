@@ -9,6 +9,18 @@ const int T = 1;
 const int R = 2;
 const int B = 3;
 
+const int ZERO_ARESTAS = 0;
+const int UMA_ARESTA = 1;
+const int DUAS_ARESTAS = 2;
+const int TRES_ARESTAS = 3;
+const int QUATRO_ARESTAS = 4; 
+
+const int PLAYER_1 = -1;
+const int PLAYER_2 = -2;
+
+const bool VITORIA = true;
+const bool DERROTA = false;
+
 typedef struct pontinho{
     //std::vector<bool> arestas_com_vizinho;
     //bool direcionais[4];
@@ -18,16 +30,21 @@ typedef struct pontinho{
 class Pontinhos{
 private:
     Matriz<pontinho> *grid;
-    Matriz<int> *closed_squares;
+    Matriz<int> *squares;
     int linhas, colunas;
     bool jogadaValida(int l1, int c1, int l2, int c2);
+    bool atualizarMatrizQuadrado(int player, int l1, int c1, int l2, int c2);
+    bool acabouJogo();
+    int quemGanhou();
 
 public:
     Pontinhos(int linhas, int colunas);
+    bool ganhouJogo();
     ~Pontinhos();
-    void fazerJogada(int l1, int c1, int l2, int c2);
+    void fazerJogada(int player, int l1, int c1, int l2, int c2);
     int getLinhas();
     int getColunas();
+    int getQuadradoAt(int linha, int coluna);
     pontinho getPontinhoAt(int linha, int coluna);
     Matriz<char>* generateView();
     

@@ -7,6 +7,11 @@
 #include "pontinhos_helper.hpp"
 #include "matriz.hpp"
 
+typedef struct par{
+    int linha;
+    int coluna; 
+} par;
+
 int Pontinhos::getLinhas(){
     return this->linhas;    
 } 
@@ -29,29 +34,151 @@ Pontinhos::Pontinhos(int linhas, int colunas){
     this->colunas = colunas;
 
     grid = new Matriz<pontinho>(linhas, colunas);
-    closed_squares = new Matriz<int>(linhas - 1, colunas - 1);
+    squares = new Matriz<int>(linhas - 1, colunas - 1);
 
     for(int i = 0; i < linhas; i++){
         grid->matriz[i][0].direcionais[L] = 'n';
         grid->matriz[i][colunas - 1].direcionais[R] = 'n';
     }
 
-
     for(int j = 0; j < colunas; j++){
         grid->matriz[0][j].direcionais[T] = 'n';
         grid->matriz[linhas - 1][j].direcionais[B] = 'n';
     }
+
+    for(int i = 0; i < linhas - 1; i++){
+        for(int j = 0; j < colunas - 1; j++){
+            squares->matriz[i][j] = 0;
+        }
+    }
 }
 
-void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
-     // verifica se a jogada é válida (distância máxima de 1)
-     if(((abs(l1 - l2) > 1) || (abs(c1 - c2)) > 1)){
-        std::cout << "Jogada inválida, você deve conectar apenas dois pontos" << std::endl;
-        // fazer jogada novamente
-     }
 
-     // escreve jogada no grid (atualizar direções dos pares ordenados)
-    
+bool Pontinhos::jogadaValida(int l1, int c1, int l2, int c2){
+    return false;
+}
+
+/* 
+ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴ 
+  ⁰   0   1   2   3
+  ¹ 0 *---*   *   *
+  ²   |00 |01  02
+  ³ 1 *---*   *   *
+  ⁴    10  11  12
+  ⁵ 2 *   *   *   *
+  ⁶    20  21  22
+  ⁷ 3 *   *   *   *
+
+    pontinhos pivôs -> pontinhos acima e À esquerda
+    índice do pivô -> mesmo índice da matriz de quadrados
+*/
+//matriz closed_squares salva o estado de quadrados fechados
+bool Pontinhos::atualizarMatrizQuadrado(int player, int l1, int c1, int l2, int c2){
+
+    bool fechou_quadrado = false;
+
+    std::vector<par> q_adjacentes1, q_adjacentes2;
+
+    //geracao dos quadrados que o ponto toca
+    for(int i = 1; i >= 0 ; i--){
+        for(int j = 1; j >= 0; j--){
+
+            //verificar se primeiro está no range de quadrados
+            if(((l1 - i) >= 0) && ((l1 - i) < (linhas -1))
+                && ((c1 - j) >= 0) && ((c1 - j) < (colunas -1))){
+                
+                q_adjacentes1.push_back((par){l1 - i, c1 - j});
+            }
+
+            //verificar se segundo ponto está no range de quadrados
+            if(((l2 - i) >= 0) && ((l2 - i) < (linhas -1))
+                && ((c2 - j) >= 0) && ((c2 - j) < (colunas -1))){
+                
+                q_adjacentes2.push_back((par){l2 - i, c2 - j});
+            }
+        }
+
+    }
+
+    //determinação dos quadrados que os dois pontos tocam
+    std::vector<par> intersecoes;
+    for (std::vector<par>::iterator it1 = q_adjacentes1.begin(); it1 != q_adjacentes1.end(); it1++){
+        for(std::vector<par>::iterator it2 = q_adjacentes2.begin(); it2 != q_adjacentes2.end(); it2++){        
+            if((it1->coluna == it2->coluna) && (it1->linha == it2->linha))
+                intersecoes.push_back(*it1);
+        }
+    }
+
+    //atualizacao dos quadrados que os dois pontos tocam
+    //vamos pensar que a mágica do tratamento de erro e do usuário inteligente estão atuando,
+    //e ninguém jogou onde já tem jogada ou nada do tipo
+    for(std::vector<par>::iterator it = intersecoes.begin(); it != intersecoes.end(); it++){
+
+        int *quadrado{&squares->matriz[it->linha][it->coluna]};
+        (*quadrado)++;
+
+        if(*quadrado == QUATRO_ARESTAS){
+            *quadrado = player;
+            fechou_quadrado = true;
+            
+        }
+    }
+
+    return fechou_quadrado;
+}
+
+bool Pontinhos::ganhouJogo(){}
+//verificar se jogada é válida (depois a gente trata o caso da pessoa jogar errado, não é só aqui, por enquanto é uma comentário, azar 
+//depois a gente vê :ppp
+
+bool Pontinhos::acabouJogo(){
+
+    for(int i = 0; i < linhas - 1; i++){
+        for(int j = 0; j < colunas - 1; j++){
+            if(squares->matriz[i][j] != PLAYER_1 && squares->matriz[i][j] != PLAYER_2){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+int Pontinhos::quemGanhou(){
+
+    int p1{0}, p2{0};
+
+    for(int i = 0; i < linhas - 1; i++){
+        for(int j = 0; j < colunas - 1; j++){
+            if(squares->matriz[i][j] == PLAYER_1){
+                p1++;
+            }else{
+                p2++;
+            }
+        }
+    }
+
+    if(p1 > p2)
+        return PLAYER_1; 
+    else
+        return PLAYER_2;
+}
+
+void Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
+
+        int jl1, jc1, jl2, jc2;
+        // verifica se a jogada é válida (distância máxima de 1)
+        if(((abs(l1 - l2) > 1) || (abs(c1 - c2)) > 1) || ((l1 != l2) && (c1 != c2))){
+            std::cout << "Jogada inválida, você deve conectar apenas dois pontos na horizontal ou vertical" << std::endl;
+            std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
+            std::cin >> jl1 >> jc1 >> jl2 >> jc2;
+            fazerJogada(player, jl1, jc1, jl2, jc2);
+            // fazer jogada novamente
+        }
+
+
+        // verificar validade
+        // escreve jogada no grid (atualizar direcionais dos pares ordenados)
         // se a primeira linha for maior que a segunda, deve haver conexão do TOP e BOTTOM, respectivamente, para os pontos
         if((l1 > l2) && (c1 == c2)){
             grid->matriz[l1][c1].direcionais[T] = 'v';
@@ -75,21 +202,37 @@ void Pontinhos::fazerJogada(int l1, int c1, int l2, int c2){
             grid->matriz[l1][c1].direcionais[R] = 'v';
             grid->matriz[l2][c2].direcionais[L] = 'v';
         }
+    
+    
 
     // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
-        // como fazer isso pelo amor de deus
+        // verifica se fechou quadrado, para atualizar a matriz de quadrados fechados (se necessário)
+    if(atualizarMatrizQuadrado(player, l1, c1, l2, c2)){
 
-    // se fechou, verifica vitória
-        // como fazer isso pelo amor de deus 2
+        // se fechou, verifica se  o jogo terminou
+        if(acabouJogo()){
 
-    // se não há vitória, o jogador que fechou quadrado joga novamente
-        // chama função de fazerJogada novamente, nao to colocando ainda por medo do codigo se rodar sozinho e gerar uma recursao fudida e quebrar tudo
-    
+            std::cout << "O jogo acabou!\n";
+            std::cout << "Quem ganhou: " << quemGanhou() << "\n";
+            exit(0);
+        }
+
+        // se não há vitória, o jogador que fechou quadrado joga novamente
+        std::cout << "Você fechou um quadrado!! Jogue novamente.\n";
+        std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
+        std::cin >> jl1 >> jc1 >> jl2 >> jc2;
+        fazerJogada(player, jl1, jc1, jl2, jc2);
+    }
+
 }
-
 Pontinhos::~Pontinhos(){
     delete(grid);
-    delete(closed_squares);
+    delete(squares);
+}
+
+
+int Pontinhos::getQuadradoAt(int linha, int coluna){
+    return squares->matriz[linha][coluna];
 }
 
 

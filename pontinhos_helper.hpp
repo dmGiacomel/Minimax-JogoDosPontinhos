@@ -13,11 +13,11 @@ public:
 ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴ 
   ⁰   0   1   2   3
   ¹ 0 *---*   *   *
-  ²   | D |
+  ²   | D | 
   ³ 1 *---*   *   *
-  ⁴
+  ⁴             
   ⁵ 2 *   *   *   *
-  ⁶
+  ⁶         
   ⁷ 3 *   *   *   *
 
    caracteres colunas = 2 do label da esquerda
@@ -44,7 +44,6 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
             view->matriz[i][j] = ' ';
         }
     }
-
 
     //escrita dos labels e dos pontinhos como *
     for (int i = 0; i < linhas; i++){
@@ -80,7 +79,7 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
     for(int i = 0; i < p_grid->getLinhas() - 1; i++){
         for (int j = 0; j < p_grid->getColunas(); j++){
 
-            if(p_grid->getPontinhoAt(i,j).direcionais[B] == 't'){
+            if(p_grid->getPontinhoAt(i,j).direcionais[B] == 'v'){
                 view->matriz[i * 2 + 2][j * 4 + 2] = '|';
             }
         }
@@ -90,13 +89,29 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
     //Verificacao do direcional R nos pontinhos das (colunas -1) colunas
     for (int i = 0; i < p_grid->getLinhas(); i++){
         for(int j = 0; j < p_grid->getColunas() - 1; j++){
-            if(p_grid->getPontinhoAt(i,j).direcionais[R] == 't'){
+            if(p_grid->getPontinhoAt(i,j).direcionais[R] == 'v'){
                 view->matriz[i * 2 + 1][j * 4 + 3] = '-';
                 view->matriz[i * 2 + 1][j * 4 + 4] = '-';
                 view->matriz[i * 2 + 1][j * 4 + 5] = '-';
             }
         }
     }
+
+    //escrita dos numerinhos do meio
+    for(int i = 0; i < p_grid->getLinhas() - 1; i++){
+        for(int j = 0; j < p_grid->getColunas() - 1; j++){
+
+            int aux = p_grid->getQuadradoAt(i, j); 
+            if(aux == PLAYER_1){
+                view->matriz[(i + 1) * 2][j * 4 + 4] = '1';
+            }
+            if(aux == PLAYER_2){
+                view->matriz[(i + 1) * 2][j * 4 + 4] = '2';
+            }
+        }
+    }
+
+
 
     return view; 
 }
