@@ -67,11 +67,6 @@ Pontinhos::Pontinhos(int linhas, int colunas){
     }
 }
 
-
-bool Pontinhos::jogadaValida(int l1, int c1, int l2, int c2){
-    return false;
-}
-
 /* 
 ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴ 
   ⁰   0   1   2   3
@@ -170,8 +165,10 @@ int Pontinhos::quemGanhou(){
 
     if(p1 > p2)
         return PLAYER_1; 
-    else
+    else if (p2 > p1)
         return PLAYER_2;
+    else
+        return 0;
 }
 
 int Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){

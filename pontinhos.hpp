@@ -33,7 +33,6 @@ private:
     bool jogadaValida(int l1, int c1, int l2, int c2);
     bool atualizarMatrizQuadrado(int player, int l1, int c1, int l2, int c2);
     bool acabouJogo();
-    int quemGanhou();
 
 public:
     Pontinhos(int linhas, int colunas);
@@ -41,6 +40,7 @@ public:
     ~Pontinhos();
     int fazerJogada(int player, int l1, int c1, int l2, int c2);
     int atualizaJogada(int player, int l1, int c1, int l2, int c2);
+    int quemGanhou();
     int getLinhas();
     int getColunas();
     Matriz<pontinho>* getGrid();

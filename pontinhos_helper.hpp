@@ -5,12 +5,20 @@
 #include "matriz.hpp"
 #include <set>
 #include <iterator>
+
+typedef struct resultado{
+    par par_start, par_end;
+    int valor;
+};
+
 class PontinhosHelper{
 
 public:
     static Matriz<char>* generateView(Pontinhos *p_grid);
     static std::vector<Pontinhos*> gerarFilhos(Pontinhos *pai);
+    static resultado minimax(Pontinhos *position, bool maxPlayer);
     static Pontinhos* getPontinhosCopia(Pontinhos *base);
+    static int avalJogada(int resultado);
 };
 
 /* 
@@ -128,10 +136,10 @@ std::vector<Pontinhos*> PontinhosHelper::gerarFilhos(Pontinhos *pai){
     for(int i = 0; i < copia->getLinhas(); i++){
         for(int j = 0; j < copia->getColunas(); j++){
             for(int k = R; k <= B; k++){
-                std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << "\n";
+                //std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << "\n";
                 if(copia->getGrid()->matriz[i][j].direcionais[k] == 'f'){
-                    std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << std::endl;
-                    std::cout << "cheguei aquiii" << "\n";
+                    //std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << std::endl;
+                    //std::cout << "cheguei aquiii" << "\n";
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'v';
                     filhos.emplace_back(getPontinhosCopia(copia));
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'f';
@@ -140,7 +148,7 @@ std::vector<Pontinhos*> PontinhosHelper::gerarFilhos(Pontinhos *pai){
         }
     }
 
-    std::cout << "Tamanho do vetor na funcao: " << filhos.size() << "\n";
+    //std::cout << "Tamanho do vetor na funcao: " << filhos.size() << "\n";
 
     delete(copia);
     return filhos; 
@@ -163,6 +171,45 @@ Pontinhos* PontinhosHelper::getPontinhosCopia(Pontinhos *base){
     return temp;
 }
 
+resultado PontinhosHelper::minimax(Pontinhos *position, bool maxPlayer){
+    std::vector<Pontinhos*> filhos;
+    filhos = gerarFilhos(position);
+    int depth = filhos.size();
+    resultado res;
 
+    // se não tiver gerado filhos, caso base
+    if(depth == 0){
+        res.valor = avalJogada(position->quemGanhou());
+        return res;
+    }
+
+    if(!maxPlayer){
+        int min = INT32_MAX;
+        for(std::vector<Pontinhos*>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            if(minimax(*it, true) < min){
+                min = minimax(*it, true);
+            }
+        }
+        return min;
+    }
+    else {
+        int max = INT32_MIN;
+        for(std::vector<Pontinhos*>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            if(minimax(*it, false) > max){
+                max = minimax(*it, false);
+            }
+        }
+        return max;
+    }
+}
+
+int PontinhosHelper::avalJogada(int resultado){
+    if (resultado == -1)
+        return -2;
+    else if (resultado == -2)
+        return 2;
+    else
+        return resultado;
+}
 
 #endif
