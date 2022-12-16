@@ -6,17 +6,14 @@
 #include <set>
 #include <iterator>
 
-typedef struct resultado{
-    par par_start, par_end;
-    int valor;
-};
+
 
 class PontinhosHelper{
 
 public:
     static Matriz<char>* generateView(Pontinhos *p_grid);
-    static std::vector<Pontinhos*> gerarFilhos(Pontinhos *pai);
-    static resultado minimax(Pontinhos *position, bool maxPlayer);
+    static std::vector<resultado> gerarFilhos(Pontinhos *pai);
+    static res_minimax minimax(resultado position, bool maxPlayer);
     static Pontinhos* getPontinhosCopia(Pontinhos *base);
     static int avalJogada(int resultado);
 };
@@ -123,25 +120,27 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
         }
     }
 
-
-
     return view; 
 }
 
-std::vector<Pontinhos*> PontinhosHelper::gerarFilhos(Pontinhos *pai){
+std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai){
     Pontinhos *copia = getPontinhosCopia(pai);
-    std::vector<Pontinhos*> filhos;
-
+    std::vector<resultado> filhos;
 
     for(int i = 0; i < copia->getLinhas(); i++){
         for(int j = 0; j < copia->getColunas(); j++){
             for(int k = R; k <= B; k++){
                 //std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << "\n";
                 if(copia->getGrid()->matriz[i][j].direcionais[k] == 'f'){
-                    //std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k] << std::endl;
-                    //std::cout << "cheguei aquiii" << "\n";
+                    
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'v';
-                    filhos.emplace_back(getPontinhosCopia(copia));
+
+                    if(k == R){
+                        filhos.emplace_back(resultado({getPontinhosCopia(copia), par{i, j}, par{i, j + 1}}));                        
+                    }else{
+                        filhos.emplace_back(resultado({getPontinhosCopia(copia), par{i, j}, par{i + 1, j}}));
+                    }
+                   
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'f';
                 }
             }  
@@ -171,35 +170,45 @@ Pontinhos* PontinhosHelper::getPontinhosCopia(Pontinhos *base){
     return temp;
 }
 
-resultado PontinhosHelper::minimax(Pontinhos *position, bool maxPlayer){
-    std::vector<Pontinhos*> filhos;
-    filhos = gerarFilhos(position);
+res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
+    std::vector<resultado> filhos;
+    filhos = gerarFilhos(position.filho);
     int depth = filhos.size();
-    resultado res;
 
     // se não tiver gerado filhos, caso base
     if(depth == 0){
-        res.valor = avalJogada(position->quemGanhou());
+        res_minimax res;
+
+        res.result = position; 
+
+        res.avaliacao = avalJogada(position.filho->quemGanhou());
         return res;
     }
 
     if(!maxPlayer){
         int min = INT32_MAX;
-        for(std::vector<Pontinhos*>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            if(minimax(*it, true) < min){
-                min = minimax(*it, true);
+        res_minimax current_min; 
+        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimax(*it, true);
+            if(current.avaliacao < min){
+                min = current.avaliacao; 
+                current_min = current;
             }
         }
-        return min;
+        return current_min;
     }
+
     else {
         int max = INT32_MIN;
-        for(std::vector<Pontinhos*>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            if(minimax(*it, false) > max){
-                max = minimax(*it, false);
+        res_minimax current_max;
+        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimax(*it, false);
+            if(current.avaliacao > max){
+                max = current.avaliacao;
+                current_max = current;
             }
         }
-        return max;
+        return current_max;
     }
 }
 

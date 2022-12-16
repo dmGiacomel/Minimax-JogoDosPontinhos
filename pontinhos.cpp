@@ -7,16 +7,18 @@
 #include "pontinhos_helper.hpp"
 #include "matriz.hpp"
 
-typedef struct par{
-    int linha;
-    int coluna; 
-} par;
+typedef struct resultado
+{
+    Pontinhos *filho;
+    par p1_gerador;
+    par p2_gerador;
+};
 
 int Pontinhos::getLinhas(){
     return this->linhas;    
 } 
 
-std::vector<Pontinhos*> Pontinhos::gerarFilhos(){
+std::vector<resultado> Pontinhos::gerarFilhos(){
     return PontinhosHelper::gerarFilhos(this);
 }
 

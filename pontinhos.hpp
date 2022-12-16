@@ -13,7 +13,7 @@ const int ZERO_ARESTAS = 0;
 const int UMA_ARESTA = 1;
 const int DUAS_ARESTAS = 2;
 const int TRES_ARESTAS = 3;
-const int QUATRO_ARESTAS = 4; 
+const int QUATRO_ARESTAS = 4;
 
 const int PLAYER_1 = -1;
 const int PLAYER_2 = -2;
@@ -21,11 +21,27 @@ const int PLAYER_2 = -2;
 const bool VITORIA = true;
 const bool DERROTA = false;
 
-typedef struct pontinho{
+
+
+typedef struct par
+{
+    int linha;
+    int coluna;
+} par;
+
+typedef struct res_minimax
+{
+    resultado result;
+    int avaliacao;
+} res_minimax;
+
+typedef struct pontinho
+{
     char direcionais[4];
 } pontinho;
 
-class Pontinhos{
+class Pontinhos
+{
 private:
     Matriz<pontinho> *grid;
     Matriz<int> *squares;
@@ -43,14 +59,13 @@ public:
     int quemGanhou();
     int getLinhas();
     int getColunas();
-    Matriz<pontinho>* getGrid();
-    Matriz<int>* getSquares();
+    Matriz<pontinho> *getGrid();
+    Matriz<int> *getSquares();
     int getQuadradoAt(int linha, int coluna);
     pontinho getPontinhoAt(int linha, int coluna);
-    Matriz<char>* generateView();
+    Matriz<char> *generateView();
 
-    std::vector<Pontinhos*> gerarFilhos();
-    
+    std::vector<resultado> gerarFilhos();
 };
 
 #endif
