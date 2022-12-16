@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 
     std::vector<Pontinhos *> filhos;
     Pontinhos *pontinhos = new Pontinhos(3, 3);
-    pontinhos->fazerJogada(-1, 1, 1, 1, 0);
+    pontinhos->fazerJogada(-1, 0, 0, 1, 0);
     Matriz<char> *view = pontinhos->generateView();
     view->printMatriz();
     filhos = pontinhos->gerarFilhos();
