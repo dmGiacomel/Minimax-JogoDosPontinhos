@@ -4,6 +4,7 @@
 #include "general_helper.hpp"
 #include "matriz.hpp"
 
+
 const int L = 0;
 const int T = 1;
 const int R = 2;
@@ -28,12 +29,6 @@ typedef struct par
     int linha;
     int coluna;
 } par;
-
-typedef struct res_minimax
-{
-    resultado result;
-    int avaliacao;
-} res_minimax;
 
 typedef struct pontinho
 {
@@ -65,7 +60,20 @@ public:
     pontinho getPontinhoAt(int linha, int coluna);
     Matriz<char> *generateView();
 
-    std::vector<resultado> gerarFilhos();
+    
 };
+
+typedef struct resultado
+{
+    Pontinhos *filho;
+    par p1_gerador;
+    par p2_gerador;
+} resultado;
+
+typedef struct res_minimax
+{
+    resultado result;
+    int avaliacao;
+} res_minimax;
 
 #endif

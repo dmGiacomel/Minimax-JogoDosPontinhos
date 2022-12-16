@@ -5,18 +5,18 @@
 #include "matriz.hpp"
 #include <set>
 #include <iterator>
+//class PontinhosHelper{
 
+//public:
 
-
-class PontinhosHelper{
-
-public:
+namespace PontinhosHelper{
     static Matriz<char>* generateView(Pontinhos *p_grid);
     static std::vector<resultado> gerarFilhos(Pontinhos *pai);
     static res_minimax minimax(resultado position, bool maxPlayer);
     static Pontinhos* getPontinhosCopia(Pontinhos *base);
     static int avalJogada(int resultado);
 };
+//};
 
 /* 
 ʲ/ᶦ ⁰¹²³⁴⁵⁶⁷⁸⁹⁰¹²³⁴ 
@@ -38,7 +38,7 @@ public:
                         + (m-1) dos tracinhos
 */
 
-//--------------PARECE ESTAR EM ORDEM-------------
+//--------------PARECE ESTAR EM ORDEM(ñ mais)-------------
 Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
 
     //determinacao das dimensoes

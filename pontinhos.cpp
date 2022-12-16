@@ -3,24 +3,18 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
-#include "pontinhos.hpp"
 #include "pontinhos_helper.hpp"
+#include "pontinhos.hpp"
 #include "matriz.hpp"
 
-typedef struct resultado
-{
-    Pontinhos *filho;
-    par p1_gerador;
-    par p2_gerador;
-};
 
 int Pontinhos::getLinhas(){
     return this->linhas;    
 } 
 
-std::vector<resultado> Pontinhos::gerarFilhos(){
-    return PontinhosHelper::gerarFilhos(this);
-}
+//std::vector<resultado> Pontinhos::gerarFilhos(){
+//    return PontinhosHelper::gerarFilhos(this);
+//}
 
 int Pontinhos::getColunas(){
     return this->colunas;
