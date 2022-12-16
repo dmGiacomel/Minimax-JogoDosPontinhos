@@ -40,6 +40,16 @@ Pontinhos::Pontinhos(int linhas, int colunas){
     grid = new Matriz<pontinho>(linhas, colunas);
     squares = new Matriz<int>(linhas - 1, colunas - 1);
 
+    // inicializa todos os direcionais como falso, depois fazemos o tratamento de casos especiais
+    for(int i = 0; i < linhas; i++){
+        for(int j = 0; j < colunas; j++){
+            grid->matriz[i][j].direcionais[L] = 'f';
+            grid->matriz[i][j].direcionais[T] = 'f';
+            grid->matriz[i][j].direcionais[R] = 'f';
+            grid->matriz[i][j].direcionais[B] = 'f';
+        }
+    }
+
     for(int i = 0; i < linhas; i++){
         grid->matriz[i][0].direcionais[L] = 'n';
         grid->matriz[i][colunas - 1].direcionais[R] = 'n';

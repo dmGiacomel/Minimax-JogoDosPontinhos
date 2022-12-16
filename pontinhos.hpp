@@ -22,9 +22,7 @@ const bool VITORIA = true;
 const bool DERROTA = false;
 
 typedef struct pontinho{
-    //std::vector<bool> arestas_com_vizinho;
-    //bool direcionais[4];
-    char direcionais[4] = {'f', 'f', 'f', 'f'};
+    char direcionais[4];
 } pontinho;
 
 class Pontinhos{

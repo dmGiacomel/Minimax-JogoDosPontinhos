@@ -128,7 +128,7 @@ std::vector<Pontinhos*> PontinhosHelper::gerarFilhos(Pontinhos *pai){
     for(int i = 0; i < copia->getLinhas(); i++){
         for(int j = 0; j < copia->getColunas(); j++){
             for(int k = R; k <= B; k++){
-                std::cout << "valor do direcional: " << int(copia->getGrid()->matriz[i][j].direcionais[k]) << "\n";
+                //std::cout << "valor do direcional: " << int(copia->getGrid()->matriz[i][j].direcionais[k]) << "\n";
                 if(copia->getGrid()->matriz[i][j].direcionais[k] == 'f'){
                     std::cout << "valor do direcional: " << copia->getGrid()->matriz[i][j].direcionais[k];
                     std::cout << "cheguei aquiii" << "\n";
