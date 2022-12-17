@@ -11,7 +11,7 @@
 
 namespace PontinhosHelper{
     static Matriz<char>* generateView(Pontinhos *p_grid);
-    static std::vector<resultado> gerarFilhos(Pontinhos *pai);
+    static std::vector<res_minimax> gerarFilhos(Pontinhos *pai, int player);
     static res_minimax minimax(resultado position, bool maxPlayer);
     static Pontinhos* getPontinhosCopia(Pontinhos *base);
     static int avalJogada(int resultado);
@@ -123,9 +123,9 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
     return view; 
 }
 
-std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai){
+std::vector<res_minimax> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
     Pontinhos *copia = getPontinhosCopia(pai);
-    std::vector<resultado> filhos;
+    std::vector<res_minimax> filhos;
 
     for(int i = 0; i < copia->getLinhas(); i++){
         for(int j = 0; j < copia->getColunas(); j++){
@@ -136,9 +136,9 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai){
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'v';
 
                     if(k == R){
-                        filhos.emplace_back(resultado({getPontinhosCopia(copia), par{i, j}, par{i, j + 1}}));                        
+                        filhos.emplace_back(res_minimax{(resultado({getPontinhosCopia(copia), par{i, j}, par{i, j + 1}})), avalJogada(getPontinhosCopia(copia)->fazerJogada(player, i, j, i , j + 1))});                        
                     }else{
-                        filhos.emplace_back(resultado({getPontinhosCopia(copia), par{i, j}, par{i + 1, j}}));
+                        filhos.emplace_back(res_minimax{(resultado({getPontinhosCopia(copia), par{i, j}, par{i + 1, j}})), avalJogada(getPontinhosCopia(copia)->fazerJogada(player, i, j, i + 1, j))});
                     }
                    
                     copia->getGrid()->matriz[i][j].direcionais[k] = 'f';
@@ -171,8 +171,14 @@ Pontinhos* PontinhosHelper::getPontinhosCopia(Pontinhos *base){
 }
 
 res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
-    std::vector<resultado> filhos;
-    filhos = gerarFilhos(position.filho);
+    std::vector<res_minimax> filhos;
+    int player = 0;
+    if(maxPlayer)
+        player = PLAYER_2;
+    else
+        player = PLAYER_1;
+
+    filhos = gerarFilhos(position.filho, player);
     int depth = filhos.size();
 
     // se não tiver gerado filhos, caso base
@@ -188,8 +194,8 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
     if(!maxPlayer){
         int min = INT32_MAX;
         res_minimax current_min; 
-        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimax(*it, true);
+        for(std::vector<res_minimax>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimax((*it).result, true);
             if(current.avaliacao < min){
                 min = current.avaliacao; 
                 current_min = current;
@@ -201,8 +207,8 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
     else {
         int max = INT32_MIN;
         res_minimax current_max;
-        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimax(*it, false);
+        for(std::vector<res_minimax>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimax((*it).result, false);
             if(current.avaliacao > max){
                 max = current.avaliacao;
                 current_max = current;
