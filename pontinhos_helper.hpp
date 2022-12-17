@@ -8,8 +8,6 @@
 //class PontinhosHelper{
 
 //public:
-    static int minha_variavel;
-
 
 namespace PontinhosHelper{
 
@@ -21,8 +19,15 @@ namespace PontinhosHelper{
     static int avalJogada(int resultado);
     static res_minimax maxRes(res_minimax r1 , res_minimax r2);
     static res_minimax minRes(res_minimax r1 , res_minimax r2);
+    static void clearResultados(std::vector<resultado>& result);
 
 };
+
+static void clearResultados(std::vector<resultado>& result){
+    for (std::vector<resultado>::iterator it = result.begin(); it != result.end(); it++){
+        delete(it->filho);
+    }
+}
 
 static res_minimax PontinhosHelper::maxRes(res_minimax r1 , res_minimax r2){
     if(r1.avaliacao >= r2.avaliacao)
@@ -170,6 +175,7 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
                             std::vector<resultado> temp_filhos = gerarFilhos(temp, player);
                             std::vector<resultado>::iterator inicio = temp_filhos.begin(), fim = temp_filhos.end();
                             filhos.insert(filhos.end(), inicio, fim);
+                            
                         }else{
                             resultado temp_res; 
                             temp_res.filho = temp;
@@ -184,6 +190,7 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
                             std::vector<resultado> temp_filhos = gerarFilhos(temp, player);
                             std::vector<resultado>::iterator inicio = temp_filhos.begin(), fim = temp_filhos.end();
                             filhos.insert(filhos.end(), inicio, fim);
+                            
                         }else{
                             resultado temp_res; 
                             temp_res.filho = temp;
@@ -246,6 +253,7 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
 
     
     filhos = gerarFilhos(position.filho, player);
+
     //std::cout << "cheguei aqui a\n"; 
     int depth = filhos.size();
     //std::cout << "tamanho do vetor de filhos: " << depth << std::endl;
@@ -255,6 +263,12 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
         res_minimax res;
         res.result = position; 
         res.avaliacao = avalJogada(position.filho->quemGanhou());
+
+        for (std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            delete(it->filho);
+        }        
+        filhos.clear();
+        filhos.shrink_to_fit();
         return res;
     }
 
@@ -266,7 +280,11 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
             res_minimax current = minimax((*it), true);
             current_min = minRes(current_min, current);
+            delete(it->filho);
         }
+    
+        filhos.clear();
+        filhos.shrink_to_fit();
         return current_min;
     }
 
@@ -278,7 +296,11 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
             res_minimax current = minimax((*it), false);
             current_max = maxRes(current_max, current);
+            delete(it->filho);
         }
+
+        filhos.clear();
+        filhos.shrink_to_fit();
         return current_max;
     }
 }
