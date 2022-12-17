@@ -7,7 +7,6 @@
 #include "pontinhos.hpp"
 #include "matriz.hpp"
 
-
 int Pontinhos::getLinhas(){
     return this->linhas;    
 } 
@@ -207,8 +206,8 @@ int Pontinhos::fazerJogada(int player, int l1, int c1, int l2, int c2){
 int Pontinhos:: atualizaJogada(int player, int l1, int c1, int l2, int c2){
     int jl1, jc1, jl2, jc2;
     int status = 0;
-    if(atualizarMatrizQuadrado(player, l1, c1, l2, c2)){
 
+    if(atualizarMatrizQuadrado(player, l1, c1, l2, c2)){
         // se fechou, verifica se  o jogo terminou
         if(acabouJogo()){
             status = quemGanhou();            

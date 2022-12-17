@@ -9,36 +9,22 @@
 int main(int argc, char **argv)
 {
 
-    std::vector<res_minimax> filhos;
+    std::vector<resultado> filhos;
     Pontinhos *pontinhos = new Pontinhos(3, 3);
-    pontinhos->fazerJogada(-1, 2, 2, 1, 2);
+    pontinhos->fazerJogada(-1, 0, 0, 0, 1);
     Matriz<char> *view = pontinhos->generateView();
     std::cout << "-----------Primeira jogada-----------\n";
+
     view->printMatriz();
-    filhos = PontinhosHelper::gerarFilhos(pontinhos, PLAYER_2);
 
-    std::cout << filhos.size() << "\n";
-    int i = 0;
-    for(std::vector<res_minimax>::iterator it = filhos.begin(); it != filhos.end(); it++, i++){
-        std::cout << "Filho" << i << "\n";
-        view = (*it).result.filho->generateView();
-        view->printMatriz();
-    }
+    res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
 
-    pontinhos->fazerJogada(-1, 0, 0, 1, 0);
+    pontinhos->fazerJogada(-2, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
+                            temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna);
+
     view = pontinhos->generateView();
     std::cout << "-----------Segunda jogada-----------\n";
     view->printMatriz();
-    filhos = PontinhosHelper::gerarFilhos(pontinhos, PLAYER_2);
-
-    std::cout << filhos.size() << "\n";
-
-    i = 0;
-    for(std::vector<res_minimax>::iterator it = filhos.begin(); it != filhos.end(); it++, i++){
-        std::cout << "Filho" << i << "\n";
-        view = (*it).result.filho->generateView();
-        view->printMatriz();
-    }
 
     return 0;
 }

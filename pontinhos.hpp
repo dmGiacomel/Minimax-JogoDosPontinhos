@@ -4,7 +4,6 @@
 #include "general_helper.hpp"
 #include "matriz.hpp"
 
-
 const int L = 0;
 const int T = 1;
 const int R = 2;
