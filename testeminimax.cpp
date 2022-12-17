@@ -45,7 +45,7 @@ int main(int argc, char **argv)
             }
             status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
         }else{
-            res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
+            res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
 
             pontinhos->fazerJogada(-2, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
                                     temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna); 

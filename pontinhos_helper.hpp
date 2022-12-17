@@ -11,10 +11,10 @@
 
 namespace PontinhosHelper{
 
-
     static Matriz<char>* generateView(Pontinhos *p_grid);
     static std::vector<resultado> gerarFilhos(Pontinhos *pai, int player);
     static res_minimax minimax(resultado position, bool maxPlayer);
+    static res_minimax minimaxAB(resultado position, bool maxPlayer, int alpha, int beta);
     static Pontinhos* getPontinhosCopia(Pontinhos *base);
     static int avalJogada(int resultado);
     static res_minimax maxRes(res_minimax r1 , res_minimax r2);
@@ -240,6 +240,77 @@ Pontinhos* PontinhosHelper::getPontinhosCopia(Pontinhos *base){
     }
 
     return temp;
+}
+
+res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int alpha, int beta){
+    std::vector<resultado> filhos;
+    int player = 0;
+
+    if(maxPlayer)
+        player = PLAYER_2;
+    else
+        player = PLAYER_1;
+
+    
+    filhos = gerarFilhos(position.filho, player);
+
+    //std::cout << "cheguei aqui a\n"; 
+    int depth = filhos.size();
+    //std::cout << "tamanho do vetor de filhos: " << depth << std::endl;
+
+    // se não tiver gerado filhos, caso base
+    if(depth == 0){
+        res_minimax res;
+        res.result = position; 
+        res.avaliacao = avalJogada(position.filho->quemGanhou());
+
+        for (std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            delete(it->filho);
+        }        
+        filhos.clear();
+        filhos.shrink_to_fit();
+        return res;
+    }
+
+    if(!maxPlayer){
+
+        //std::cout << "cheguei aqui a\n"; 
+        res_minimax current_min; 
+        current_min.avaliacao = INT32_MAX;
+        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimaxAB((*it), true, alpha, beta);
+            current_min = minRes(current_min, current);
+            beta = std::min(beta, current_min.avaliacao);
+            delete(it->filho);
+            if(beta <= alpha){
+                break;
+            }
+        }
+    
+        filhos.clear();
+        filhos.shrink_to_fit();
+        return current_min;
+    }
+
+    else {
+        //        std::cout << "cheguei aqui b\n"; 
+
+        res_minimax current_max; 
+        current_max.avaliacao = INT32_MIN;       
+        for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
+            res_minimax current = minimaxAB((*it), false, alpha, beta);
+            current_max = maxRes(current_max, current);
+            alpha = std::max(alpha, current_max.avaliacao);
+            delete(it->filho);
+            if(beta <= alpha){
+                break;
+            }
+        }
+
+        filhos.clear();
+        filhos.shrink_to_fit();
+        return current_max;
+    }
 }
 
 res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
