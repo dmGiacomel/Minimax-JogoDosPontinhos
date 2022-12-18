@@ -1,3 +1,4 @@
+// g++ testeminimax.cpp pontinhos.cpp -o minimax
 #include <iostream>
 #include "matriz.hpp"
 #include <vector>
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
         system("clear");
         matriz->printMatriz();
         std::cout << "---------------PLAYER'S "<< abs(player) << " TURN------------------\n";
-
+        std::cout << "Tamanho de pontinhos = " << sizeof(Pontinhos) << std::endl;
         if(player == PLAYER_1){
             std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
             std::cin >> jl1 >> jc1 >> jl2 >> jc2;
@@ -47,19 +48,30 @@ int main(int argc, char **argv)
         }else{
             res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
 
-            pontinhos->fazerJogada(-2, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
+            status = pontinhos->fazerJogada(-2, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
                                     temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna); 
         }
+        //std::cout << "status = " << status << std::endl;
         std::cout << "\n";
         matriz = pontinhos->generateView();
         matriz->printMatriz();
         while(status == 1){
-            std::cout << "Você fechou um quadrado!! Jogue novamente.\n";
-            std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
-            std::cin >> jl1 >> jc1 >> jl2 >> jc2;
-            status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
-            matriz = pontinhos->generateView();
-            matriz->printMatriz();
+            if(player == PLAYER_1){
+                std::cout << "Você fechou um quadrado!! Jogue novamente.\n";
+                std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
+                std::cin >> jl1 >> jc1 >> jl2 >> jc2;
+                status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
+                matriz = pontinhos->generateView();
+                matriz->printMatriz();
+            }
+            else{
+                std::cout << "A IA fechou um quadrado e irá jogar novamente. \n";
+                res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
+                status = pontinhos->fazerJogada(player, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
+                                    temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna);
+                matriz = pontinhos->generateView();
+                matriz->printMatriz();
+            }
         }
 
         if(status == PLAYER_1){
