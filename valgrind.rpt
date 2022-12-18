@@ -1,0 +1,578 @@
+==17697== Memcheck, a memory error detector
+==17697== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17697== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17697== Command: ./minimax 2 4
+==17697== Parent PID: 17685
+==17697== 
+==17697== 
+==17697== HEAP SUMMARY:
+==17697==     in use at exit: 17,505,292 bytes in 988,171 blocks
+==17697==   total heap usage: 1,156,249 allocs, 168,078 frees, 20,640,780 bytes allocated
+==17697== 
+==17697== 12 bytes in 1 blocks are possibly lost in loss record 4 of 271
+==17697==    at 0x4844899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x110615: int** GeneralHelper::alocarMatriz<int>(int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x1101E8: Matriz<int>::Matriz(int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10F525: Pontinhos::Pontinhos(int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109DE5: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 108 (16 direct, 92 indirect) bytes in 1 blocks are definitely lost in loss record 15 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x10DF26: PontinhosHelper::generateView(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10F463: Pontinhos::generateView() (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AB99: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 124 (24 direct, 100 indirect) bytes in 1 blocks are definitely lost in loss record 16 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x10AB6A: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 972 (144 direct, 828 indirect) bytes in 9 blocks are definitely lost in loss record 54 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x10DF26: PontinhosHelper::generateView(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10F463: Pontinhos::generateView() (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AEAB: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 3,720 (720 direct, 3,000 indirect) bytes in 30 blocks are definitely lost in loss record 88 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 3,720 (720 direct, 3,000 indirect) bytes in 30 blocks are definitely lost in loss record 89 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 3,720 (720 direct, 3,000 indirect) bytes in 30 blocks are definitely lost in loss record 90 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 3,968 (768 direct, 3,200 indirect) bytes in 32 blocks are definitely lost in loss record 92 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 3,968 (768 direct, 3,200 indirect) bytes in 32 blocks are definitely lost in loss record 93 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 5,208 (1,008 direct, 4,200 indirect) bytes in 42 blocks are definitely lost in loss record 102 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 7,564 (1,464 direct, 6,100 indirect) bytes in 61 blocks are definitely lost in loss record 111 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 7,688 (1,488 direct, 6,200 indirect) bytes in 62 blocks are definitely lost in loss record 112 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 9,920 (1,920 direct, 8,000 indirect) bytes in 80 blocks are definitely lost in loss record 120 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 11,656 (2,256 direct, 9,400 indirect) bytes in 94 blocks are definitely lost in loss record 125 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 15,376 (2,976 direct, 12,400 indirect) bytes in 124 blocks are definitely lost in loss record 142 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 15,624 (3,024 direct, 12,600 indirect) bytes in 126 blocks are definitely lost in loss record 143 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 18,724 (3,624 direct, 15,100 indirect) bytes in 151 blocks are definitely lost in loss record 153 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 26,040 (5,040 direct, 21,000 indirect) bytes in 210 blocks are definitely lost in loss record 162 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 34,968 (6,768 direct, 28,200 indirect) bytes in 282 blocks are definitely lost in loss record 173 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 39,172 (7,584 direct, 31,588 indirect) bytes in 316 blocks are definitely lost in loss record 179 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 46,872 (9,072 direct, 37,800 indirect) bytes in 378 blocks are definitely lost in loss record 181 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 65,224 (12,624 direct, 52,600 indirect) bytes in 526 blocks are definitely lost in loss record 197 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 82,088 (15,888 direct, 66,200 indirect) bytes in 662 blocks are definitely lost in loss record 207 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 91,388 (17,688 direct, 73,700 indirect) bytes in 737 blocks are definitely lost in loss record 210 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 93,000 (18,000 direct, 75,000 indirect) bytes in 750 blocks are definitely lost in loss record 211 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 95,852 (18,552 direct, 77,300 indirect) bytes in 773 blocks are definitely lost in loss record 212 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 104,904 (20,304 direct, 84,600 indirect) bytes in 846 blocks are definitely lost in loss record 214 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 115,568 (22,368 direct, 93,200 indirect) bytes in 932 blocks are definitely lost in loss record 218 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 133,920 (25,920 direct, 108,000 indirect) bytes in 1,080 blocks are definitely lost in loss record 222 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 138,260 (26,760 direct, 111,500 indirect) bytes in 1,115 blocks are definitely lost in loss record 224 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 142,104 (27,504 direct, 114,600 indirect) bytes in 1,146 blocks are definitely lost in loss record 225 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 168,144 (32,544 direct, 135,600 indirect) bytes in 1,356 blocks are definitely lost in loss record 232 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 203,980 (39,480 direct, 164,500 indirect) bytes in 1,645 blocks are definitely lost in loss record 235 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 217,248 (42,048 direct, 175,200 indirect) bytes in 1,752 blocks are definitely lost in loss record 239 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 254,200 (49,200 direct, 205,000 indirect) bytes in 2,050 blocks are definitely lost in loss record 242 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 291,772 (56,472 direct, 235,300 indirect) bytes in 2,353 blocks are definitely lost in loss record 247 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 424,080 (82,080 direct, 342,000 indirect) bytes in 3,420 blocks are definitely lost in loss record 253 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 426,188 (82,488 direct, 343,700 indirect) bytes in 3,437 blocks are definitely lost in loss record 254 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 432,760 (83,760 direct, 349,000 indirect) bytes in 3,490 blocks are definitely lost in loss record 255 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 452,352 (87,552 direct, 364,800 indirect) bytes in 3,648 blocks are definitely lost in loss record 256 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 617,892 (119,592 direct, 498,300 indirect) bytes in 4,983 blocks are definitely lost in loss record 261 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 693,448 (134,232 direct, 559,216 indirect) bytes in 5,593 blocks are definitely lost in loss record 263 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 949,716 (183,816 direct, 765,900 indirect) bytes in 7,659 blocks are definitely lost in loss record 265 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109C25: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 1,134,476 (219,576 direct, 914,900 indirect) bytes in 9,149 blocks are definitely lost in loss record 266 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 1,645,852 (318,552 direct, 1,327,300 indirect) bytes in 13,273 blocks are definitely lost in loss record 268 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 2,040,916 (395,016 direct, 1,645,900 indirect) bytes in 16,459 blocks are definitely lost in loss record 269 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109B33: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 2,170,248 (420,048 direct, 1,750,200 indirect) bytes in 17,502 blocks are definitely lost in loss record 270 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== 4,060,504 (785,904 direct, 3,274,600 indirect) bytes in 32,746 blocks are definitely lost in loss record 271 of 271
+==17697==    at 0x4845013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17697==    by 0x109DB4: PontinhosHelper::getPontinhosCopia(Pontinhos*) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x109A94: PontinhosHelper::gerarFilhos(Pontinhos*, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A005: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A1B7: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10A39E: PontinhosHelper::minimaxAB(resultado, bool, int, int) (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697==    by 0x10AE5F: main (in /home/pirgus/Área de Trabalho/pirgus/unio-2022/IA/trabalho01/Minimax-JogoDosPontinhos/minimax)
+==17697== 
+==17697== LEAK SUMMARY:
+==17697==    definitely lost: 3,388,072 bytes in 141,173 blocks
+==17697==    indirectly lost: 14,117,124 bytes in 846,992 blocks
+==17697==      possibly lost: 12 bytes in 1 blocks
+==17697==    still reachable: 84 bytes in 5 blocks
+==17697==         suppressed: 0 bytes in 0 blocks
+==17697== Reachable blocks (those to which a pointer was found) are not shown.
+==17697== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==17697== 
+==17697== For lists of detected and suppressed errors, rerun with: -s
+==17697== ERROR SUMMARY: 48 errors from 48 contexts (suppressed: 0 from 0)
