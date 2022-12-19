@@ -31,7 +31,7 @@ int main(int argc, char **argv)
             player = PLAYER_2;  
         }
 
-        //system("clear");
+        system("clear");
         matriz->printMatriz();
         std::cout << "---------------PLAYER'S "<< abs(player) << " TURN------------------\n";
         std::cout << "Tamanho de pontinhos = " << sizeof(Pontinhos) << std::endl;
