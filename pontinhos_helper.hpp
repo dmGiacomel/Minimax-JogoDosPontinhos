@@ -286,7 +286,7 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
         res_minimax current_min; 
         current_min.avaliacao = INT32_MAX;
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimaxAB((*it), false, alpha, beta);
+            res_minimax current = minimaxAB((*it), true, alpha, beta);
             current_min = minRes(current_min, current);
             beta = std::min(beta, current_min.avaliacao);
             delete(it->filho);
@@ -295,8 +295,8 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
             }
         }
     
-        filhos.clear();
-        filhos.shrink_to_fit();
+        //filhos.clear();
+        //filhos.shrink_to_fit();
         return current_min;
     }
 
@@ -306,7 +306,7 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
         res_minimax current_max; 
         current_max.avaliacao = INT32_MIN;       
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimaxAB((*it), true, alpha, beta);
+            res_minimax current = minimaxAB((*it), false, alpha, beta);
             current_max = maxRes(current_max, current);
             alpha = std::max(alpha, current_max.avaliacao);
             delete(it->filho);
@@ -315,11 +315,11 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
             }
         }
 
-        filhos.clear();
-        filhos.shrink_to_fit();
-                                std::cout << "current max : " << current_max.avaliacao << "\n";
-                                std::cout << "jogada: " << current_max.result.p1_gerador.linha << " " << current_max.result.p1_gerador.coluna 
-                                                << " " << current_max.result.p2_gerador.linha << " " << current_max.result.p2_gerador.coluna << "\n" ;
+        //filhos.clear();
+        //filhos.shrink_to_fit();
+        //std::cout << "current max : " << current_max.avaliacao << "\n";
+        //std::cout << "jogada: " << current_max.result.p1_gerador.linha << " " << current_max.result.p1_gerador.coluna 
+        //         << " " << current_max.result.p2_gerador.linha << " " << current_max.result.p2_gerador.coluna << "\n" ;
 
         return current_max;
     }
