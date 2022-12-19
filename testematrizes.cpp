@@ -16,15 +16,11 @@ int main (){
     p->fazerJogada(-1, 0, 1, 0, 2);
     p->fazerJogada(-1, 0, 2, 1, 2);
 
+    res_minimax rm = PontinhosHelper::minimaxAB(resultado{p, par{0, 0}, par{0, 0}}, true, INT32_MIN, INT32_MAX);
+    p->fazerJogada(-2, rm.result.p1_gerador.linha, rm.result.p1_gerador.coluna, rm.result.p2_gerador.linha, rm.result.p2_gerador.coluna);
 
-    std::vector<resultado> res = PontinhosHelper::gerarFilhos(p, -1);
-
-    for(std::vector<resultado>::iterator it = res.begin(); it != res.end(); it++){
-        Matriz<char> *view  = PontinhosHelper::generateView(it->filho);
-
-        std::cout << "jogada: " << it->p1_gerador.linha << " " << it->p1_gerador.coluna << " " << 
-                                   it->p2_gerador.linha << " " << it->p2_gerador.coluna << "\n" ;
-        view->printMatriz();
-        std::cout << std::endl;
-    }
+    Matriz<char> *m = p->generateView();
+    m->printMatriz();
 }
+
+
