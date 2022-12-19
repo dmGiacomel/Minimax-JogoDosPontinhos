@@ -20,8 +20,14 @@ namespace PontinhosHelper{
     static res_minimax maxRes(res_minimax r1 , res_minimax r2);
     static res_minimax minRes(res_minimax r1 , res_minimax r2);
     static void clearResultados(std::vector<resultado>& result);
+    static bool melhorJogada(resultado resultado_1, resultado resultado_2, Pontinhos *pai);
+    static int avalJogada(Pontinhos *resultado);
 
 };
+
+static bool melhorJogada(resultado resultado_1, resultado resultado_2, Pontinhos *pai){
+
+}
 
 static void clearResultados(std::vector<resultado>& result){
     for (std::vector<resultado>::iterator it = result.begin(); it != result.end(); it++){
@@ -30,14 +36,14 @@ static void clearResultados(std::vector<resultado>& result){
 }
 
 static res_minimax PontinhosHelper::maxRes(res_minimax r1 , res_minimax r2){
-    if(r1.avaliacao >= r2.avaliacao)
+    if(r1.avaliacao > r2.avaliacao)
         return r1;
     else
         return r2;
  }
 
  static res_minimax PontinhosHelper::minRes(res_minimax r1 , res_minimax r2){
-    if(r1.avaliacao <= r2.avaliacao)
+    if(r1.avaliacao < r2.avaliacao)
         return r1;
     else
         return r2;
@@ -66,7 +72,7 @@ static res_minimax PontinhosHelper::maxRes(res_minimax r1 , res_minimax r2){
 */
 
 //--------------PARECE ESTAR EM ORDEM(ñ mais)-------------
-Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
+static Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
 
     //std::cout << "Linhas e colunas do pontinho que vem no argumento: " << p_grid->getLinhas() << " " << p_grid->getColunas() << "\n";
 
@@ -156,6 +162,7 @@ Matriz<char>* PontinhosHelper::generateView(Pontinhos *p_grid){
 
 std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
     Pontinhos *copia = getPontinhosCopia(pai);
+
     std::vector<resultado> filhos;
 
     for(int i = 0; i < copia->getLinhas(); i++){
@@ -166,7 +173,7 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
                 //std::cout << "temp no gerar filhos: " << temp << '\n';
 
                 int fechou_quadrado;
-                if(copia->getGrid()->matriz[i][j].direcionais[k] == 'f'){
+                if(temp->getGrid()->matriz[i][j].direcionais[k] == 'f'){
                     if(k == R){
 
                         fechou_quadrado = temp->fazerJogada(player, i, j, i, j + 1);
@@ -174,6 +181,7 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
                         if(fechou_quadrado == 1){
                             std::vector<resultado> temp_filhos = gerarFilhos(temp, player);
                             std::vector<resultado>::iterator inicio = temp_filhos.begin(), fim = temp_filhos.end();
+
                             filhos.insert(filhos.end(), inicio, fim);
                             
                         }else{
@@ -219,7 +227,6 @@ std::vector<resultado> PontinhosHelper::gerarFilhos(Pontinhos *pai, int player){
     //     view->printMatriz();
     // }
 
-    delete(copia);
     return filhos; 
 }
 
@@ -262,7 +269,8 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
     if(depth == 0){
         res_minimax res;
         res.result = position; 
-        res.avaliacao = avalJogada(position.filho->quemGanhou());
+        res.avaliacao = avalJogada(position.filho);
+                //std::cout << "avaliacao na folha: " << res.avaliacao << "\n";   
 
         for (std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
             delete(it->filho);
@@ -278,7 +286,7 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
         res_minimax current_min; 
         current_min.avaliacao = INT32_MAX;
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimaxAB((*it), true, alpha, beta);
+            res_minimax current = minimaxAB((*it), false, alpha, beta);
             current_min = minRes(current_min, current);
             beta = std::min(beta, current_min.avaliacao);
             delete(it->filho);
@@ -298,7 +306,7 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
         res_minimax current_max; 
         current_max.avaliacao = INT32_MIN;       
         for(std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
-            res_minimax current = minimaxAB((*it), false, alpha, beta);
+            res_minimax current = minimaxAB((*it), true, alpha, beta);
             current_max = maxRes(current_max, current);
             alpha = std::max(alpha, current_max.avaliacao);
             delete(it->filho);
@@ -309,6 +317,10 @@ res_minimax PontinhosHelper::minimaxAB(resultado position, bool maxPlayer, int a
 
         filhos.clear();
         filhos.shrink_to_fit();
+                                std::cout << "current max : " << current_max.avaliacao << "\n";
+                                std::cout << "jogada: " << current_max.result.p1_gerador.linha << " " << current_max.result.p1_gerador.coluna 
+                                                << " " << current_max.result.p2_gerador.linha << " " << current_max.result.p2_gerador.coluna << "\n" ;
+
         return current_max;
     }
 }
@@ -333,7 +345,8 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
     if(depth == 0){
         res_minimax res;
         res.result = position; 
-        res.avaliacao = avalJogada(position.filho->quemGanhou());
+        res.avaliacao = avalJogada(position.filho);
+        std::cout << "avaliacao na folha: " << res.avaliacao << "\n";   
 
         for (std::vector<resultado>::iterator it = filhos.begin(); it != filhos.end(); it++){
             delete(it->filho);
@@ -372,17 +385,34 @@ res_minimax PontinhosHelper::minimax(resultado position, bool maxPlayer){
 
         filhos.clear();
         filhos.shrink_to_fit();
+                        std::cout << "current max : " << current_max.avaliacao << "\n";   
+
         return current_max;
     }
 }
 
-int PontinhosHelper::avalJogada(int resultado){
-    if (resultado == -1)
-        return -2;
-    else if (resultado == -2)
-        return 2;
-    else
-        return resultado;
+// static int PontinhosHelper::avalJogada(int resultado){
+//     if (resultado == -1)
+//         return -2;
+//     else if (resultado == -2)
+//         return 2;
+//     else
+//         return resultado;
+// }
+
+static int PontinhosHelper::avalJogada(Pontinhos *resultado){
+    
+    int ret{0};
+    for(int i = 0; i < resultado->getLinhas() - 1; i++){
+        for(int j = 0; j < resultado->getColunas() - 1; j++){
+
+            if(resultado->getSquares()->matriz[i][j] == PLAYER_2){
+                ret++;
+            }
+        }
+    }
+
+    return ret;
 }
 
 #endif

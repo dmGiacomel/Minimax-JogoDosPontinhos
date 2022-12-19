@@ -21,18 +21,17 @@ int main(int argc, char **argv)
     Pontinhos *pontinhos = new Pontinhos(linhas_pontinhos, colunas_pontinhos);
     Matriz<char> *matriz = pontinhos->generateView();
    
-
     int aux = 0, player = 0;
     int status = 0;
     while((status == 0) || (status == 1)){
         
         if(aux % 2 == 0){
-            player = PLAYER_1;
+            player = PLAYER_2;
         }else{
-            player = PLAYER_2;  
+            player = PLAYER_1;  
         }
 
-        system("clear");
+        //system("clear");
         matriz->printMatriz();
         std::cout << "---------------PLAYER'S "<< abs(player) << " TURN------------------\n";
         std::cout << "Tamanho de pontinhos = " << sizeof(Pontinhos) << std::endl;
@@ -46,7 +45,9 @@ int main(int argc, char **argv)
             }
             status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
         }else{
-            res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
+            //res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
+
+            res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, false, INT32_MIN, INT32_MAX);
 
             status = pontinhos->fazerJogada(-2, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
                                     temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna); 
@@ -66,7 +67,9 @@ int main(int argc, char **argv)
             }
             else{
                 std::cout << "A IA fechou um quadrado e irá jogar novamente. \n";
-                res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
+                //res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
+                res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, false, INT32_MIN, INT32_MAX);
+
                 status = pontinhos->fazerJogada(player, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
                                     temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna);
                 matriz = pontinhos->generateView();
