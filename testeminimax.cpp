@@ -34,7 +34,7 @@ int main(int argc, char **argv)
         system("clear");
         matriz->printMatriz();
         std::cout << "---------------PLAYER'S "<< abs(player) << " TURN------------------\n";
-        std::cout << "Tamanho de pontinhos = " << sizeof(Pontinhos) << std::endl;
+        //std::cout << "Tamanho de pontinhos = " << sizeof(Pontinhos) << std::endl;
         if(player == PLAYER_1){
             std::cout << "Informe a jogada que deseja realizar (l1, c1, l2, c2)\n";
             std::cin >> jl1 >> jc1 >> jl2 >> jc2;
