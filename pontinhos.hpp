@@ -66,6 +66,7 @@ typedef struct resultado
     Pontinhos *filho;
     par p1_gerador;
     par p2_gerador;
+    int fechou_quadrado;
 } resultado;
 
 typedef struct res_minimax

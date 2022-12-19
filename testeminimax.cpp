@@ -26,9 +26,9 @@ int main(int argc, char **argv)
     while((status == 0) || (status == 1)){
         
         if(aux % 2 == 0){
-            player = PLAYER_2;
+            player = PLAYER_1;
         }else{
-            player = PLAYER_1;  
+            player = PLAYER_2;  
         }
 
         //system("clear");
@@ -46,8 +46,9 @@ int main(int argc, char **argv)
             status = pontinhos->fazerJogada(player, jl1, jc1, jl2, jc2);
         }else{
             //res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
+            res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
 
-            res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
+            //res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
             //std::cout << "jogada: " << temp.result.p1_gerador.linha << " " << temp.result.p1_gerador.coluna 
             //        << " " << temp.result.p2_gerador.linha << " " << temp.result.p2_gerador.coluna << "\n" ;
 
@@ -70,8 +71,8 @@ int main(int argc, char **argv)
             }
             else{
                 std::cout << "A IA fechou um quadrado e irá jogar novamente. \n";
-                //res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
-                res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
+                res_minimax temp = PontinhosHelper::minimax({pontinhos, {0, 0}, {0, 0}}, true);
+                //res_minimax temp = PontinhosHelper::minimaxAB({pontinhos, {0, 0}, {0, 0}}, true, INT32_MIN, INT32_MAX);
 
                 status = pontinhos->fazerJogada(player, temp.result.p1_gerador.linha, temp.result.p1_gerador.coluna, 
                                     temp.result.p2_gerador.linha, temp.result.p2_gerador.coluna);
